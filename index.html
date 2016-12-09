@@ -5,119 +5,475 @@
     <meta charset="utf-8" />
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--<link href="css/navbar-fixed-side.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="Content/sideBarCollapse.css">-->
     <link rel="stylesheet" type="text/css" href="Content/mystyle.css">
     <script src="Scripts/myjavascript.js"></script>
-    <script src="Scripts/jquery-1.12.4.js"></script>
-    <script src="Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="angularFunctions.js"></script>
 </head>
-
-
-<body onload="matrixRain()">
-
-    <canvas id="matrix"></canvas>
-    <div class="content">
-        <div class="intro">
-            <div class="col-sm-offset-1 col-sm-8">
-                <h1>Peter Connell</h1>
-                <h4>
-                    Currently in the final year of an Honours Bachelor Degree in Computing.
-                    Have experience developing using the .net framework utilising Visual Studio, SQL server and TFS.
-                    Also a competent user of Java, SQL, HTML, CSS and C++.
-                    Now intend to apply my knowledge in ICT, along with my significant communication skills and resourcefulness, to establish a career in the IT sector.
-                </h4>
+<body onload="matrixRain()" ng-app="myApp">
+    <!--<body  ng-app="myApp">-->
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">Peter Connell</a>
             </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-sm-offset-2 col-sm-10 default" hidden>
-                <h3>Skills &amp; Attributes</h3>
-                <div class="col-sm-10">
-                    <ul>
-                        <li>Competent user of ASP.Net framework</li>
-                        <li>Knowledgeable developer of Java programming</li>
-                        <li>Adept at designing and creating database schemas</li>
-                        <li>Can write SQL queries to intermediate level using Oracle SQL Developer</li>
-                        <li>Capable of working within a team dynamic and under personal initiative</li>
-                        <li>Strong communication and interpersonal skills</li>
-                        <li>Capable of developing websites using HTML and CSS</li>
-                        <li>Excellent time management capabilities</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-sm-offset-2 col-sm-10 default" hidden>
-                <h3>Education</h3>
-                <h4>Institute of Technology Tallaght: Sept 2013 – Present</h4>
-                <h5>Bachelor of Science (Honours) in Computing</h5>
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">4th Year</a></li>
-                    <li><a href="#">3rd Year</a></li>
-                    <li><a href="#">2nd Year</a></li>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#about">
+                            <i class="fa fa-id-card-o fa"></i>
+                            <span>About Me</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tech">
+                            <i class="fa fa-laptop fa"></i>
+                            <span>Technologies</span>
+                        </a>
+                    </li>
+                    <li onclick="toggleProjects()">
+                        <a href="#projects">
+                            <i class="fa fa-laptop fa"></i>
+                            <span>Projects</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#Education">
+                            <i class="fa fa-graduation-cap fa">  </i>
+                            <span>Education</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#Employment">
+                            <i class="fa fa-building fa"></i>
+                            <span>Work Experience</span>
+                        </a>
+                    </li>
                 </ul>
-                <table class="table table-bordered table-hover hidden" id="year4">
-                    <thead> <tr> <th>Module</th> <th>Result</th> </tr> </thead>
-                    <tbody>
-                        <tr> <td>Advanced Databases </td> <td>A</td> </tr>
-                        <tr> <td>Cloud servers and distributed computing</td> <td>B</td> </tr>
-                        <tr> <td>Innovation & Entrepreneurship </td> <td>A</td> </tr>
-                        <tr> <td>Operating Systems </td> <td>B+</td> </tr>
-                        <tr> <td>Web Design & Development  </td> <td>B+</td> </tr>
-                        <tr> <td>Algorithms and Data Structures </td> <td>B</td> </tr>
-                    </tbody>
-                </table>
-                <table class="table table-bordered table-hover hidden" id="year2">
-                    <thead> <tr> <th>Module</th> <th>Result</th> </tr> </thead>
-                    <tbody>
-                        <tr> <td>Software Development 3 </td> <td>A</td> </tr>
-                        <tr> <td>Software Development 4</td> <td>B+</td> </tr>
-                        <tr> <td>Project </td> <td>A</td> </tr>
-                        <tr> <td>Networking 1</td> <td>A</td> </tr>
-                        <tr> <td>Networking 2</td> <td>A</td> </tr>
-                        <tr> <td>Software Quality Ass & Test </td> <td>A</td> </tr>
-                        <tr> <td>Networking 2</td> <td>A</td> </tr>
-                        <tr> <td>Information Security</td> <td>B+</td> </tr>
-                        <tr> <td>Object Orientated Analysis</td> <td>B</td> </tr>
-                    </tbody>
-                </table>
-                <table class="table table-bordered table-hover hidden" id="year3">
-                    <thead> <tr> <th>Module</th> <th>Result</th> </tr> </thead>
-                    <tbody>
-                        <tr> <td>Advanced Databases </td> <td>A</td> </tr>
-                        <tr> <td>Cloud servers and distributed computing</td> <td>B</td> </tr>
-                        <tr> <td>Innovation & Entrepreneurship </td> <td>A</td> </tr>
-                        <tr> <td>Operating Systems </td> <td>B+</td> </tr>
-                        <tr> <td>Web Design & Development  </td> <td>B+</td> </tr>
-                        <tr> <td>Algorithms and Data Structures </td> <td>B</td> </tr>
-                    </tbody>
-                </table>
+            </div><!-- /.nav-collapse -->
+        </div><!-- /.container -->
+    </nav><!-- /.navbar -->
 
-                <h4>DBS, 13/14 Aungier St., Dublin: Sept 2012 – May 2013</h4>
-                <h5>Cert in Fundamentals of Computer Networking and Cloud Technology (NFQ. level 6)</h5>
+    <div class="container-fluid">
+        <canvas id="matrix"></canvas>
+        <div class="row row-offcanvas row-offcanvas-right">
+            <div class="col-xs-12 col-sm-9 col-sm-push-3">
 
-                <h4>Institute of Technology Carlow</h4>
-                <h5>National Diploma in Industrial Design (NFQ. level 7)</h5>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-sm-offset-2 col-sm-10 default" hidden>
-                <h3>Employment History</h3>
-                <h4>
-                    Department of Social Protection
-                    <img class="logo" src="Images/DSPLogo.jpg" alt="DSP logo" align="middle" style="height: 100%; object-fit: contain">
-                </h4>
-                <p hidden>
-                    Skills gained: Experience developing utilising the .net framework.
-                    Knowledge of and working with Microsoft development toolkit such as Visual Studio, SQL Server and Team Foundation Server.
-                    Writing tests to verify that requirements meet the defined acceptance criteria.
+                <p class="pull-right visible-xs">
+                    <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas" onclick="multiCollapse()" title="Toggle sidebar"><i class="fa fa-chevron-right"></i></button>
                 </p>
-            </div>
-        </div>
-    </div>
-</body>
+                <!--Introduction-->
+                <div class="row jumbotron" id="about">
 
+                    <div class="col-sm-12">
+                        <h1>Peter Connell</h1>
+                        <h4>
+                            Currently in the final year of an Honours Bachelor Degree in Computing.
+                            Have industry experience developing in C# with the .net framework. A competent user of Visual Studio, SQL server and TFS.
+                            Also have knowledge of Java, SQL, HTML, CSS, jQuery and C++. Have recently began developing in Python
+                            using the Django framework. Now eagerly awaiting my graduation to embark on a career in the IT industry.
+                        </h4>
+                    </div>
+
+                </div>
+                <br>
+                <br>
+                <!--Skills and technology-->
+                <div class="row intro container-fluid" id="tech">
+
+                    <div class="col-sm-10">
+                        <h2>Technologies    <i class="fa fa-laptop fa"></i> </h2>
+                        <div class="col-sm-12 tech">
+                            <img src="Images/2p4i.png" alt="C sharp" />
+                            <img src="Images/java-logo.png" alt="java" />
+                            <img src="Images/Python-Logo-PNG-Image.png" alt="python" />
+                            <img src="Images/HTML5Logo.png" alt="html" />
+                            <img src="Images/css3.svg" alt="css" />
+                            <img src="Images/jquery.png" alt="jquery" />
+                            <img src="Images/visual-studio-2013-logo.png" alt="visual studio" />
+                            <img src="Images/intellijidea.png" />
+                            <img src="Images/microsoft.net_.logo_.jpg" />
+                            <img src="Images/djangoLogo.png" />
+                            <img src="Images/Linux-Hosting-Transparent.png" />
+                            <img src="Images/SQL-Server-2012.png" />
+                            <img src="Images/gitHub-logo.png" />
+                            <img src="Images/azure-icon-250x250.png" />
+                            <img src="Images/tableau.png" />
+                            <img src="Images/Photoshop_CC_icon.png" />
+                            <img src="Images/MTA+Networking+Fundamentals-01.png" />
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+
+                <div id="projects" class="container-fluid">
+                    <h2>Projects</h2>
+                    <div class="item">
+                        <h3>Social Contribution Project</h3>
+
+                        <p>
+                            Member of an Agile development team that was responsible for the modernisation of a legacy application that allows for a client’s social
+                            insurance contribution history record to be calculated and a communication to be issued. The role
+                            involved writing and executing tests to verify that requirements meet the defined acceptance criteria,
+                            logging defects when the requirements do not meet the defined criteria and required knowledge of C# and the .net framework.
+                            The project was developed using the Naked Objects Framework and was intended for use on the company intranet.
+                        </p>
+                    </div>
+                    <div class="item">
+                        <h3>Stock Control System</h3>
+
+                        <p>
+                            An application developed using the .net framework for the Department of Social Protection. With 3 regional and 13 divisional offices supporting a
+                            network of 64 Social Welfare Local Offices, 850 former Community Welfare Offices and clinics and 60 former FÁS Employment Services Offices
+                            across the country the organisation has a constant turnover of resources. The application was required to record all patciculars of incoming and outgoing orders
+                            delivered nationwide as well as keeping track of stock levels in the in-house distribution centres.
+                        </p>
+                    </div>
+                    <div class="item">
+                        <h3>Health &amp; Safety Incident Application</h3>
+                        <p>
+                            A web application developed using the .net framework which provided the means for accurate reporting of health and safety
+                            incidents and a cloud based database for storage. The application utilised amcharts, a JavaScript / HTML5 library,
+                            to generate charts for data-visualisation.
+
+                        </p>
+                    </div>
+
+                    <!--Bowling Alley Booking System-->
+                    <div class="item">
+                        <h3>Bowling Alley Booking System</h3>
+                        <p>
+                            A group project involving the development of a bowling alley reservation system. The application allowed multiple users to add/edit
+                            and delete bookings through a GUI which updated a back-end database. Features included account authorization with different privilege
+                            levels, file checking, updating, charts, and modification date checking for multiple users.
+                        </p>
+                        <!-- Trigger the modal with a button -->
+                        <button type="button" class="btn btn-info btn-info" data-toggle="modal" data-target="#myModal">View Screenshots</button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Bowling Alley Booking System</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            <br>
+                                            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                                <!-- Indicators -->
+                                                <ol class="carousel-indicators">
+                                                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                                                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                                                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                                                </ol>
+
+                                                <!-- Wrapper for slides -->
+                                                <div class="carousel-inner" role="listbox">
+
+                                                    <div class="item active">
+                                                        <img src="Images/logo.png" alt="Logo" width="460" height="345">
+                                                        <div class="carousel-caption">
+                                                            <h3>Logo</h3>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item ">
+                                                        <img src="Images/Bowlhome.png" alt="Homepage" width="460" height="345">
+                                                        <div class="carousel-caption">
+                                                            <h3>Homepage</h3>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item">
+                                                        <img src="Images/chartSize.JPG" alt="Lanes" width="460" height="345">
+                                                        <div class="carousel-caption">
+                                                            <h3>Lane Bookings</h3>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="item">
+                                                        <img src="Images/form2FORMATTED.png" alt="Booking From" width="220">
+
+                                                        <div class="carousel-caption">
+                                                            <h3>Booking Form</h3>
+
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+
+                                                <!-- Left and right controls -->
+                                                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--End region Bowling Alley Booking System-->
+                </div>
+
+                <br>
+                <br>
+                <!--Education section-->
+                <div class="row container-fluid default">
+                    <div class="col-sm-10" id="Education">
+                        <h2>Education</h2>
+                        <h4><img src="Images/ITTallaghtLogo.png" alt="ITT logo" style="background-color: #ffffff;width:36px;height:24px;" />  Institute of Technology Tallaght: <span> Sept 2013 – Present</span></h4>
+                        <h5>Bachelor of Science (Honours) in Computing</h5>
+                        <ul class="nav nav-pills nav-justified border">
+                            <li><a data-toggle="pill" href="#fourthYear">4th Year</a></li>
+                            <li><a data-toggle="pill" href="#thirdYear">3rd Year</a></li>
+                            <li><a data-toggle="pill" href="#secondYear">2nd Year</a></li>
+                            <li><a data-toggle="pill" href="#firstYear">1st Year</a></li>
+                        </ul>
+
+                        <div class="tab-content" ng-controller="results">
+                            <div id="fourthYear" class="tab-pane fade">
+                                <table class="table table-bordered table-hover" id="year4">
+                                    <thead> <tr> <th>Module</th> <th>Result</th> </tr> </thead>
+                                    <tbody>
+                                        <tr ng-repeat="x in modulesList4">
+                                            <td>{{ x.module }}</td>
+                                            <td>{{ x.result }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="thirdYear" class="tab-pane fade">
+                                <table class="table table-bordered table-hover" id="year3">
+                                    <thead> <tr> <th>Module</th> <th>Result</th> </tr> </thead>
+                                    <tbody>
+                                        <tr ng-repeat="x in modulesList3">
+                                            <td>{{ x.module }}</td>
+                                            <td>{{ x.result }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="secondYear" class="tab-pane fade">
+                                <table class="table table-bordered table-hover" id="year2">
+                                    <thead> <tr> <th>Module</th> <th>Result</th> </tr> </thead>
+                                    <tbody>
+                                        <tr ng-repeat="x in modulesList2">
+                                            <td>{{ x.module }}</td>
+                                            <td>{{ x.result }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                            <div id="firstYear" class="tab-pane fade">
+                                <table class="table table-bordered table-hover" id="year1">
+                                    <thead> <tr> <th>Module</th> <th>Result</th> </tr> </thead>
+                                    <tbody>
+                                        <tr ng-repeat="x in modulesList1">
+                                            <td>{{ x.module }}</td>
+                                            <td>{{ x.result }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <h4>
+                            <img src="Images/Dublin_BS_logo.jpg" alt="DBS logo" style="background-color: #ffffff;width:36px;height:24px;" />  Dublin Business School: Sept 2012 – May 2013
+                        </h4>
+                        <h5>Cert in Fundamentals of Computer Networking and Cloud Technology (NFQ. level 6)</h5>
+
+                        <h4>
+                            <img src="Images/ITCarlowLogo.jpg" alt="DBS logo" style="background-color: #ffffff;width:20px;height:24px;" />  Institute of Technology Carlow
+                        </h4>
+                        <h5>National Diploma in Industrial Design (NFQ. level 7)</h5>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <!--Employment div-->
+                <div class="row default container-fluid">
+                    <h2 onclick="toggleWork()">Employment History</h2>
+                    <div class="col-sm-12" name="Employment" id="Employment">
+                        <!--<h4>
+                            Department of Social Protection
+                            <img class="logo" src="Images/DSPLogo.jpg" alt="DSP logo" align="middle" style="height: 100%; object-fit: contain">
+                        </h4>-->
+                        <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="collapse" data-target="#dsp">Department of Social Protection</button>
+                        <!--<a href="#dsp" class="btn btn-primary btn-lg btn-block" role="button" data-toggle="collapse" data-target="#dsp">Department of Social Protection</a>-->
+                        <div id="dsp" class="collapse">
+                            <div class="col-md-6">
+                                <h3>Skills &amp; Attributes</h3>
+                                <ul>
+                                    <li>Team work</li>
+                                    <li>Agile</li>
+                                    <li>Ability to work well under pressure</li>
+                                    <li>Communication</li>
+                                    <li>Problem-Solving</li>
+                                    <li>Planning and organising</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h3>Intern</h3>
+                                <p>
+                                    Member of an Agile development team that was responsible for the modernisation of a legacy application that allows for a client’s social
+                                    insurance contribution history record to be calculated and a communication to be issued. The role involved writing and executing tests to
+                                    verify that requirements meet the defined acceptance criteria, logging defects when the requirements do not meet the defined criteria and
+                                    required knowledge of C# and the .net framework. The project was developed using the Naked Objects Framework and was intended for use on
+                                    the company intranet.
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+
+                        <!--<a href="#south" class="btn btn-primary btn-lg btn-block" role="button" data-toggle="collapse" data-target="#south">South Street Construction</a>-->
+                        <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="collapse" data-target="#south">South Street Construction</button>
+                        <div id="south" class="collapse">
+                            <div class="col-md-6">
+                                <h3>Skills &amp; Attributes</h3>
+                                <ul>
+                                    <li>Team work</li>
+                                    <li>Responsibilty</li>
+                                    <li>Ability to work well under pressure</li>
+                                    <li>Communication</li>
+                                    <li>Problem-Solving</li>
+                                    <li>Planning and organising</li>
+                                    <li>Quick learning</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h3>Pipe fitter</h3>
+                                <p>
+                                    As an employee of South Street Construction, the position involved working within a small team and included the responsibilty of planning
+                                    safe plans of action, organisation of materials, strict adhesion to plans &amp; standards and constant communication with site foremen, engineers
+                                    and safety officers. Primarily employed as a pipe fitter, with minimum prior experience, the position required quick learning to gain the necessary knowledge to meet industry
+                                    standards and specifications. The role demanded excellent organisational and communication skills to meet strict deadlines.
+                                    By utilising and adapting previous experience gained in the construction industry, the knowledge required to perform the role was quickly acquired.
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="collapse" data-target="#sdcc">South Dublin County Council</button>
+                        <div id="sdcc" class="collapse">
+                            <div class="col-md-6">
+                                <h3>Skills &amp; Attributes</h3>
+                                <ul>
+                                    <li>Communication</li>
+                                    <li>Organisation</li>
+                                    <li>Teamwork</li>
+                                    <li>Customer service</li>
+                                    <li>Interpersonal ability</li>
+                                    <li>Attention to detail</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h3>Bricklayer/ Stone Mason</h3>
+                                <p>
+                                    As a member of the parks department team for SDCC, was employed to repair, renovate and build public amenities. Strong communication skills were required as the position involved
+                                    interacting with the general public on an almost daily basis and as an employee of the public sector required the ability to
+                                    communicate with tact and diplomacy. Additionally strong interpersonal skills were essential to acheive results working with a varied work force.
+                                    The role also required attention to detail to ensure tasks were completed to the highest standard.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--end employment div-->
+                </div>
+            </div><!--/.col-xs-12.col-sm-9-->
+
+            <div class="col-xs-6 col-sm-3 col-sm-pull-9 sidebar-offcanvas" id="sidebar">
+                <div id="centre">
+
+                    <div class="row">
+                        <h1>Peter Connell</h1>
+                    </div>
+                    <br />
+                    <div class="row centre">
+
+                        <img src="Images/profilePic.jpg" class="img-circle" style="background-color: #eda866;width:200px;height:180px;" />
+                    </div>
+                    <br />
+                    <!--<div class="row centre">-->
+                    <div class="col-sm-12">
+                        <p><i class="fa fa-envelope-o" aria-hidden="true"></i> peterdconnell@hotmail.com</p>
+                        <br />
+                        <p><i class="fa fa-phone" aria-hidden="true"></i> +353 86 3921600</p>
+                        <br />
+                        <p><i class="fa fa-linkedin" aria-hidden="true"></i> <a href="https://ie.linkedin.com/in/peterconnell">https://ie.linkedin.com/in/peterconnell</a></p>
+                    </div>
+                    <!--</div>-->
+                    <!-- Trigger the modal with a button -->
+                    <button type="button" class="btn btn-info btn-info" data-toggle="modal" data-target="#myModal">Contact me</button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Contact Me</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form-horizontal col-sm-12" onsubmit="return confirm('Do you really want to submit the form?');">
+                                        <div class="form-group"><label>Name</label><input class="form-control required" placeholder="Your name" data-placement="top" data-trigger="manual" data-content="Must be at least 3 characters long, and must only contain letters." type="text"></div>
+                                        <div class="form-group"><label>Message</label><textarea class="form-control" placeholder="Your message here.." data-placement="top" data-trigger="manual"></textarea></div>
+                                        <div class="form-group"><label>E-Mail</label><input class="form-control email" placeholder="Your email" data-placement="top" data-trigger="manual" data-content="Must be a valid e-mail address (user@gmail.com)" type="text"></div>
+                                        <div class="form-group"><label>Phone</label><input class="form-control phone" placeholder="Enter phone number" data-placement="top" data-trigger="manual" data-content="Must be a valid phone number (999-999-9999)" type="text"></div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-success pull-right">Send It!</button>
+                                            <p class="help-block pull-left text-danger hide" id="form-error">&nbsp; The form is not valid. </p>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.sidebar-offcanvas-->
+        </div><!--/row-->
+
+        <hr>
+
+        <footer>
+            <p>Thank you for visiting.       </p>
+        </footer>
+
+    </div><!--/.container-->
+</body>
 </html>
+
+
